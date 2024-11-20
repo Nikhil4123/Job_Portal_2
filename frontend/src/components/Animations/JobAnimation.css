@@ -1,0 +1,50 @@
+.job-animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none; /* Ensure this does not block other interactions */
+  }
+  
+  .job-icon {
+    position: absolute;
+    font-size: 50px; /* Adjust size as needed */
+    opacity: 0;
+    animation: move 10s linear infinite;
+  }
+  
+  @keyframes move {
+    0% {
+      transform: translateX(-100%);
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .job-icon-1 {
+    animation-delay: 0s;
+  }
+  
+  .job-icon-2 {
+    animation-delay: 2s;
+    left: 20%;
+  }
+  
+  .job-icon-3 {
+    animation-delay: 4s;
+    left: 50%;
+  }
+  
+  .job-icon-4 {
+    animation-delay: 6s;
+    left: 80%;
+  }
+  
