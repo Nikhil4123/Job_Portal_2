@@ -1,7 +1,12 @@
+// MODULES //
 import express from "express";
-import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+
+// MODELS //
+import { User } from "../models/user.model.js";
+
+// OTHERS //
 import multer from "multer";
 
 const app = express();
@@ -26,11 +31,11 @@ export const register = async (req, res) => {
         message: "Something is missing",
         success: false,
       });
-    }
+    } 
 
     const user = await User.findOne({ email });
     if (user) {
-      return res.status(400).json({
+      return res.status(400).json({   
         message: "User already exists with this email",
         success: false,
       });
@@ -71,7 +76,7 @@ export const login = async (req, res) => {
 
     let user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({
+      return res.status(400).json({ 
         message: "Incorrect email",
         success: false,
       });
@@ -146,6 +151,7 @@ export const logout = async (req, res) => {
 // Update Profile route for completeness
 export const updateProfile = async (req, res) => {
   try {
+    const {fullname , email, phoneNumber,bio, skills} =req.body;
     const file = req.file;
 
     let skillsArray;
@@ -182,6 +188,7 @@ export const updateProfile = async (req, res) => {
       role: user.role,
       profile: user.profile,
     };
+    console.log(fullname, phoneNumber, email , skills);
 
     return res.status(200).json({
       message: "Profile updated successfully",
